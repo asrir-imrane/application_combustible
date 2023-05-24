@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CharbonDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appel_Offre">
+    <Key>
+      <PropertyRef Name="id_appOffre" />
+    </Key>
+    <Property Name="id_appOffre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="n_appel_offres" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_planning" Type="int" Nullable="false" />
+    <Property Name="tonnage" Type="float" Nullable="false" />
+    <Property Name="date_Emission" Type="date" Nullable="false" />
+    <Property Name="date_livraison" Type="date" Nullable="false" />
+    <Property Name="date_creation" Type="date" Nullable="false" />
+    <Property Name="nbr_bateaux" Type="int" Nullable="false" />
+    <Property Name="observation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="statut" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom_utilisateur" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppelOffre_Details">
+    <Key>
+      <PropertyRef Name="id_AppDetails" />
+    </Key>
+    <Property Name="id_AppDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_StockPrev" Type="int" Nullable="false" />
+    <Property Name="id_appOffre" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Association">
+    <Key>
+      <PropertyRef Name="id_Association" />
+    </Key>
+    <Property Name="id_Association" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code_A0" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_AppDetails" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bateau">
+    <Key>
+      <PropertyRef Name="id_bateau" />
+    </Key>
+    <Property Name="id_bateau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_bateau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_origine" Type="int" Nullable="false" />
+    <Property Name="tonnage" Type="float" Nullable="false" />
+    <Property Name="valeur_calorifique" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="cout" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="frais_douane" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="decharge" Type="float" Nullable="false" />
+    <Property Name="prix_rendu" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="assurance" Type="float" Nullable="false" />
+    <Property Name="num_contat_bateau" Type="int" Nullable="false" />
+    <Property Name="etat" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Centrale_Stock">
+    <Key>
+      <PropertyRef Name="Id_SCentrale" />
+    </Key>
+    <Property Name="Id_SCentrale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stock_initial" Type="float" Nullable="false" />
+    <Property Name="id_station" Type="int" Nullable="false" />
+    <Property Name="stock_final" Type="float" Nullable="false" />
+    <Property Name="stock_difference" Type="float" Nullable="false" />
+    <Property Name="stock_ajustement" Type="float" Nullable="false" />
+    <Property Name="stock_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contrat">
+    <Key>
+      <PropertyRef Name="id_contrat" />
+    </Key>
+    <Property Name="id_contrat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_contrat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_appOffre" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contrat_Details">
+    <Key>
+      <PropertyRef Name="id_contDetails" />
+    </Key>
+    <Property Name="id_contDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_debut" Type="date" Nullable="false" />
+    <Property Name="id_contrat" Type="int" Nullable="false" />
+    <Property Name="id_fournisseur" Type="int" Nullable="false" />
+    <Property Name="date_fin" Type="date" Nullable="false" />
+    <Property Name="date_creation" Type="date" Nullable="false" />
+    <Property Name="quantite_total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="nbr_cargaisons" Type="int" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="statut" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom_utilisateur" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dechargement">
+    <Key>
+      <PropertyRef Name="id_dechargement" />
+    </Key>
+    <Property Name="id_dechargement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_contrat" Type="int" Nullable="false" />
+    <Property Name="id_bateau" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fournisseur">
+    <Key>
+      <PropertyRef Name="id_fournisseur" />
+    </Key>
+    <Property Name="id_fournisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_fournisseur" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Origine">
+    <Key>
+      <PropertyRef Name="id_origine" />
+    </Key>
+    <Property Name="id_origine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_origine" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planing_Previsionnel">
+    <Key>
+      <PropertyRef Name="id_planning" />
+    </Key>
+    <Property Name="id_planning" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="annee" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_station" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Station">
+    <Key>
+      <PropertyRef Name="id_station" />
+    </Key>
+    <Property Name="id_station" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_station" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="station_type">
+    <Key>
+      <PropertyRef Name="Id_Stype" />
+    </Key>
+    <Property Name="Id_Stype" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_type" Type="int" Nullable="false" />
+    <Property Name="id_station" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="id_stock" />
+    </Key>
+    <Property Name="id_stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consommation" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_bateau" Type="int" Nullable="false" />
+    <Property Name="livraison" Type="float" Nullable="false" />
+    <Property Name="decharge" Type="float" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="autonomie" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stock_Previsionnel">
+    <Key>
+      <PropertyRef Name="id_StockPrev" />
+    </Key>
+    <Property Name="id_StockPrev" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nbr_bateaux" Type="int" Nullable="false" />
+    <Property Name="tonnage_prev" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'CharbonDB.dbo.MaVue' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="MaVue">
+    <Key>
+      <PropertyRef Name="id_planning" />
+      <PropertyRef Name="annee" />
+      <PropertyRef Name="id_station" />
+      <PropertyRef Name="nom_station" />
+    </Key>
+    <Property Name="id_planning" Type="int" Nullable="false" />
+    <Property Name="annee" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_station" Type="int" Nullable="false" />
+    <Property Name="nom_station" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_10">
+    <End Role="Bateau" Type="Self.Bateau" Multiplicity="1" />
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bateau">
+        <PropertyRef Name="id_bateau" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="id_bateau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_11">
+    <End Role="Origine" Type="Self.Origine" Multiplicity="1" />
+    <End Role="Bateau" Type="Self.Bateau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Origine">
+        <PropertyRef Name="id_origine" />
+      </Principal>
+      <Dependent Role="Bateau">
+        <PropertyRef Name="id_origine" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_12">
+    <End Role="Stock_Previsionnel" Type="Self.Stock_Previsionnel" Multiplicity="1" />
+    <End Role="AppelOffre_Details" Type="Self.AppelOffre_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock_Previsionnel">
+        <PropertyRef Name="id_StockPrev" />
+      </Principal>
+      <Dependent Role="AppelOffre_Details">
+        <PropertyRef Name="id_StockPrev" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_13">
+    <End Role="AppelOffre_Details" Type="Self.AppelOffre_Details" Multiplicity="1" />
+    <End Role="Association" Type="Self.Association" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppelOffre_Details">
+        <PropertyRef Name="id_AppDetails" />
+      </Principal>
+      <Dependent Role="Association">
+        <PropertyRef Name="id_AppDetails" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_14">
+    <End Role="Appel_Offre" Type="Self.Appel_Offre" Multiplicity="1" />
+    <End Role="AppelOffre_Details" Type="Self.AppelOffre_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appel_Offre">
+        <PropertyRef Name="id_appOffre" />
+      </Principal>
+      <Dependent Role="AppelOffre_Details">
+        <PropertyRef Name="id_appOffre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_14_1">
+    <End Role="Station" Type="Self.Station" Multiplicity="1" />
+    <End Role="Centrale_Stock" Type="Self.Centrale_Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="id_station" />
+      </Principal>
+      <Dependent Role="Centrale_Stock">
+        <PropertyRef Name="id_station" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_14_2">
+    <End Role="Contrat" Type="Self.Contrat" Multiplicity="1" />
+    <End Role="Contrat_Details" Type="Self.Contrat_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat">
+        <PropertyRef Name="id_contrat" />
+      </Principal>
+      <Dependent Role="Contrat_Details">
+        <PropertyRef Name="id_contrat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_14_3">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="station_type" Type="Self.station_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="station_type">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_15">
+    <End Role="Station" Type="Self.Station" Multiplicity="1" />
+    <End Role="station_type" Type="Self.station_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="id_station" />
+      </Principal>
+      <Dependent Role="station_type">
+        <PropertyRef Name="id_station" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_3">
+    <End Role="Station" Type="Self.Station" Multiplicity="1" />
+    <End Role="Planing_Previsionnel" Type="Self.Planing_Previsionnel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="id_station" />
+      </Principal>
+      <Dependent Role="Planing_Previsionnel">
+        <PropertyRef Name="id_station" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_4">
+    <End Role="Planing_Previsionnel" Type="Self.Planing_Previsionnel" Multiplicity="1" />
+    <End Role="Appel_Offre" Type="Self.Appel_Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planing_Previsionnel">
+        <PropertyRef Name="id_planning" />
+      </Principal>
+      <Dependent Role="Appel_Offre">
+        <PropertyRef Name="id_planning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_5">
+    <End Role="Appel_Offre" Type="Self.Appel_Offre" Multiplicity="1" />
+    <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appel_Offre">
+        <PropertyRef Name="id_appOffre" />
+      </Principal>
+      <Dependent Role="Contrat">
+        <PropertyRef Name="id_appOffre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_7">
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+    <End Role="Contrat_Details" Type="Self.Contrat_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fournisseur">
+        <PropertyRef Name="id_fournisseur" />
+      </Principal>
+      <Dependent Role="Contrat_Details">
+        <PropertyRef Name="id_fournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_8">
+    <End Role="Contrat" Type="Self.Contrat" Multiplicity="1" />
+    <End Role="Dechargement" Type="Self.Dechargement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat">
+        <PropertyRef Name="id_contrat" />
+      </Principal>
+      <Dependent Role="Dechargement">
+        <PropertyRef Name="id_contrat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_9">
+    <End Role="Bateau" Type="Self.Bateau" Multiplicity="1" />
+    <End Role="Dechargement" Type="Self.Dechargement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bateau">
+        <PropertyRef Name="id_bateau" />
+      </Principal>
+      <Dependent Role="Dechargement">
+        <PropertyRef Name="id_bateau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CharbonDBModel1StoreContainer">
+    <EntitySet Name="Appel_Offre" EntityType="Self.Appel_Offre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppelOffre_Details" EntityType="Self.AppelOffre_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Association" EntityType="Self.Association" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bateau" EntityType="Self.Bateau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Centrale_Stock" EntityType="Self.Centrale_Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contrat" EntityType="Self.Contrat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contrat_Details" EntityType="Self.Contrat_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dechargement" EntityType="Self.Dechargement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Origine" EntityType="Self.Origine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Planing_Previsionnel" EntityType="Self.Planing_Previsionnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Station" EntityType="Self.Station" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="station_type" EntityType="Self.station_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock_Previsionnel" EntityType="Self.Stock_Previsionnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaVue" EntityType="Self.MaVue" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MaVue].[id_planning] AS [id_planning], 
+    [MaVue].[annee] AS [annee], 
+    [MaVue].[id_station] AS [id_station], 
+    [MaVue].[nom_station] AS [nom_station]
+    FROM [dbo].[MaVue] AS [MaVue]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_10" Association="Self.FK_10">
+      <End Role="Bateau" EntitySet="Bateau" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_11" Association="Self.FK_11">
+      <End Role="Origine" EntitySet="Origine" />
+      <End Role="Bateau" EntitySet="Bateau" />
+    </AssociationSet>
+    <AssociationSet Name="FK_12" Association="Self.FK_12">
+      <End Role="Stock_Previsionnel" EntitySet="Stock_Previsionnel" />
+      <End Role="AppelOffre_Details" EntitySet="AppelOffre_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_13" Association="Self.FK_13">
+      <End Role="AppelOffre_Details" EntitySet="AppelOffre_Details" />
+      <End Role="Association" EntitySet="Association" />
+    </AssociationSet>
+    <AssociationSet Name="FK_14" Association="Self.FK_14">
+      <End Role="Appel_Offre" EntitySet="Appel_Offre" />
+      <End Role="AppelOffre_Details" EntitySet="AppelOffre_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_14_1" Association="Self.FK_14_1">
+      <End Role="Station" EntitySet="Station" />
+      <End Role="Centrale_Stock" EntitySet="Centrale_Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_14_2" Association="Self.FK_14_2">
+      <End Role="Contrat" EntitySet="Contrat" />
+      <End Role="Contrat_Details" EntitySet="Contrat_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_14_3" Association="Self.FK_14_3">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="station_type" EntitySet="station_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_15" Association="Self.FK_15">
+      <End Role="Station" EntitySet="Station" />
+      <End Role="station_type" EntitySet="station_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_3" Association="Self.FK_3">
+      <End Role="Station" EntitySet="Station" />
+      <End Role="Planing_Previsionnel" EntitySet="Planing_Previsionnel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_4" Association="Self.FK_4">
+      <End Role="Planing_Previsionnel" EntitySet="Planing_Previsionnel" />
+      <End Role="Appel_Offre" EntitySet="Appel_Offre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_5" Association="Self.FK_5">
+      <End Role="Appel_Offre" EntitySet="Appel_Offre" />
+      <End Role="Contrat" EntitySet="Contrat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_7" Association="Self.FK_7">
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+      <End Role="Contrat_Details" EntitySet="Contrat_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_8" Association="Self.FK_8">
+      <End Role="Contrat" EntitySet="Contrat" />
+      <End Role="Dechargement" EntitySet="Dechargement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_9" Association="Self.FK_9">
+      <End Role="Bateau" EntitySet="Bateau" />
+      <End Role="Dechargement" EntitySet="Dechargement" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

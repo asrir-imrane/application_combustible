@@ -1,0 +1,189 @@
+﻿
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+    .center ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+    }
+
+
+    .center ul {
+        margin-top: 1rem;
+    }
+
+        .center ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #3c5a65;
+            width: 98%;
+            padding: 1rem 2rem;
+            margin: 1rem 0px;
+            border-radius: 20px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            position: relative;
+            transition: all .3s ease;
+            background-color: #e9ecef;
+        }
+
+            .center ul li:hover:before {
+                content: "";
+                display: flex;
+                width: 8px;
+                height: 100%;
+                background-color: #e9ecef;
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-left: -1.5rem;
+                border-radius: 25px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            }
+
+            .center ul li:hover {
+                transform: translateX(15px);
+            }
+
+title_contrat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+p {
+    font-size: 18px;
+}
+
+.title_contrat h4 {
+    font-size: 25px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+
+
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .image .bi.bi-file-earmark-text {
+        font-size: 54px;
+    }
+
+.date-group {
+    width: 20%;
+}
+
+
+.text-group {
+    width: 20%;
+}
+
+.action-group {
+    width: 4%;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #3c5a65;
+    opacity: 0.5;
+    border-radius: 10px;
+}
+
+
+
+    .button-box:hover,
+    .button-box:focus {
+        opacity: 0.9;
+        text-decoration: none;
+    }
+
+
+/* Small Screens */
+@media only screen and (max-width: 576px) {
+    .center ul li:hover {
+        transform: none;
+    }
+
+    .date-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Medium Screens */
+@media only screen and (max-width: 768px) {
+    .center li {
+        flex-direction: column;
+    }
+
+        .center li > div {
+            margin: 1rem 0px;
+        }
+
+    .text-group {
+        width: 80%;
+        text-align: center;
+    }
+
+    .date-group {
+        display: flex;
+    }
+
+        .date-group h4, p {
+            margin: 0px .5rem;
+        }
+}
+
+
+canvas {
+    display: block;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+
+table, .btn-success, .search-form .form-control {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.excel-form {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+    .excel-form:hover {
+        background-color: #218838;
+    }

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CharbonDBModel1StoreContainer" CdmEntityContainer="CharbonDBEntities2">
+    <EntitySetMapping Name="Appel_Offre">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Appel_Offre">
+        <MappingFragment StoreEntitySet="Appel_Offre">
+          <ScalarProperty Name="id_appOffre" ColumnName="id_appOffre" />
+          <ScalarProperty Name="n_appel_offres" ColumnName="n_appel_offres" />
+          <ScalarProperty Name="id_planning" ColumnName="id_planning" />
+          <ScalarProperty Name="tonnage" ColumnName="tonnage" />
+          <ScalarProperty Name="date_Emission" ColumnName="date_Emission" />
+          <ScalarProperty Name="date_livraison" ColumnName="date_livraison" />
+          <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+          <ScalarProperty Name="nbr_bateaux" ColumnName="nbr_bateaux" />
+          <ScalarProperty Name="observation" ColumnName="observation" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="statut" ColumnName="statut" />
+          <ScalarProperty Name="nom_utilisateur" ColumnName="nom_utilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppelOffre_Details">
+      <EntityTypeMapping TypeName="CharbonDBModel1.AppelOffre_Details">
+        <MappingFragment StoreEntitySet="AppelOffre_Details">
+          <ScalarProperty Name="id_AppDetails" ColumnName="id_AppDetails" />
+          <ScalarProperty Name="id_StockPrev" ColumnName="id_StockPrev" />
+          <ScalarProperty Name="id_appOffre" ColumnName="id_appOffre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Association">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Association">
+        <MappingFragment StoreEntitySet="Association">
+          <ScalarProperty Name="id_Association" ColumnName="id_Association" />
+          <ScalarProperty Name="code_A0" ColumnName="code_A0" />
+          <ScalarProperty Name="id_AppDetails" ColumnName="id_AppDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bateau">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Bateau">
+        <MappingFragment StoreEntitySet="Bateau">
+          <ScalarProperty Name="id_bateau" ColumnName="id_bateau" />
+          <ScalarProperty Name="nom_bateau" ColumnName="nom_bateau" />
+          <ScalarProperty Name="id_origine" ColumnName="id_origine" />
+          <ScalarProperty Name="tonnage" ColumnName="tonnage" />
+          <ScalarProperty Name="valeur_calorifique" ColumnName="valeur_calorifique" />
+          <ScalarProperty Name="cout" ColumnName="cout" />
+          <ScalarProperty Name="frais_douane" ColumnName="frais_douane" />
+          <ScalarProperty Name="decharge" ColumnName="decharge" />
+          <ScalarProperty Name="prix_rendu" ColumnName="prix_rendu" />
+          <ScalarProperty Name="assurance" ColumnName="assurance" />
+          <ScalarProperty Name="num_contat_bateau" ColumnName="num_contat_bateau" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Centrale_Stock">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Centrale_Stock">
+        <MappingFragment StoreEntitySet="Centrale_Stock">
+          <ScalarProperty Name="Id_SCentrale" ColumnName="Id_SCentrale" />
+          <ScalarProperty Name="stock_initial" ColumnName="stock_initial" />
+          <ScalarProperty Name="id_station" ColumnName="id_station" />
+          <ScalarProperty Name="stock_final" ColumnName="stock_final" />
+          <ScalarProperty Name="stock_difference" ColumnName="stock_difference" />
+          <ScalarProperty Name="stock_ajustement" ColumnName="stock_ajustement" />
+          <ScalarProperty Name="stock_date" ColumnName="stock_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrat">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Contrat">
+        <MappingFragment StoreEntitySet="Contrat">
+          <ScalarProperty Name="id_contrat" ColumnName="id_contrat" />
+          <ScalarProperty Name="nom_contrat" ColumnName="nom_contrat" />
+          <ScalarProperty Name="id_appOffre" ColumnName="id_appOffre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrat_Details">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Contrat_Details">
+        <MappingFragment StoreEntitySet="Contrat_Details">
+          <ScalarProperty Name="id_contDetails" ColumnName="id_contDetails" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="id_contrat" ColumnName="id_contrat" />
+          <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+          <ScalarProperty Name="quantite_total" ColumnName="quantite_total" />
+          <ScalarProperty Name="nbr_cargaisons" ColumnName="nbr_cargaisons" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="statut" ColumnName="statut" />
+          <ScalarProperty Name="nom_utilisateur" ColumnName="nom_utilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dechargement">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Dechargement">
+        <MappingFragment StoreEntitySet="Dechargement">
+          <ScalarProperty Name="id_dechargement" ColumnName="id_dechargement" />
+          <ScalarProperty Name="id_contrat" ColumnName="id_contrat" />
+          <ScalarProperty Name="id_bateau" ColumnName="id_bateau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseur">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Fournisseur">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+          <ScalarProperty Name="nom_fournisseur" ColumnName="nom_fournisseur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Origine">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Origine">
+        <MappingFragment StoreEntitySet="Origine">
+          <ScalarProperty Name="id_origine" ColumnName="id_origine" />
+          <ScalarProperty Name="nom_origine" ColumnName="nom_origine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planing_Previsionnel">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Planing_Previsionnel">
+        <MappingFragment StoreEntitySet="Planing_Previsionnel">
+          <ScalarProperty Name="id_planning" ColumnName="id_planning" />
+          <ScalarProperty Name="annee" ColumnName="annee" />
+          <ScalarProperty Name="id_station" ColumnName="id_station" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Station">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Station">
+        <MappingFragment StoreEntitySet="Station">
+          <ScalarProperty Name="id_station" ColumnName="id_station" />
+          <ScalarProperty Name="nom_station" ColumnName="nom_station" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="station_type">
+      <EntityTypeMapping TypeName="CharbonDBModel1.station_type">
+        <MappingFragment StoreEntitySet="station_type">
+          <ScalarProperty Name="Id_Stype" ColumnName="Id_Stype" />
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="id_station" ColumnName="id_station" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stock">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+          <ScalarProperty Name="consommation" ColumnName="consommation" />
+          <ScalarProperty Name="id_bateau" ColumnName="id_bateau" />
+          <ScalarProperty Name="livraison" ColumnName="livraison" />
+          <ScalarProperty Name="decharge" ColumnName="decharge" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="autonomie" ColumnName="autonomie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stock_Previsionnel">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Stock_Previsionnel">
+        <MappingFragment StoreEntitySet="Stock_Previsionnel">
+          <ScalarProperty Name="id_StockPrev" ColumnName="id_StockPrev" />
+          <ScalarProperty Name="nbr_bateaux" ColumnName="nbr_bateaux" />
+          <ScalarProperty Name="tonnage_prev" ColumnName="tonnage_prev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="CharbonDBModel1.Types">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaVue">
+      <EntityTypeMapping TypeName="CharbonDBModel1.MaVue">
+        <MappingFragment StoreEntitySet="MaVue">
+          <ScalarProperty Name="id_planning" ColumnName="id_planning" />
+          <ScalarProperty Name="annee" ColumnName="annee" />
+          <ScalarProperty Name="id_station" ColumnName="id_station" />
+          <ScalarProperty Name="nom_station" ColumnName="nom_station" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

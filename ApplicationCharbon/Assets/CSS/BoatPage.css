@@ -1,0 +1,107 @@
+﻿.card {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    color: #2e2d31;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card_id {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 0.25rem;
+    background-color: #23343b;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.temporary_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .temporary_text img {
+        width: 2000px;
+        height: 430px;
+    }
+
+
+
+
+.cardB_title {
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.cardB_content .cardB_description .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.cardB_content {
+   
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: #f2f2f2;
+    border-top-left-radius: 20px;
+    transform: translateY(350px);
+    transition: transform .25s;
+}
+
+    .cardB_content::before {
+        content: '';
+        position: absolute;
+        top: -47px;
+        right: -45px;
+        width: 100px;
+        height: 100px;
+        transform: rotate(-175deg);
+        border-radius: 50%;
+        box-shadow: inset 48px 48px #f2f2f2;
+    }
+
+.cardB_title {
+    color: #131313;
+    line-height: 15px;
+}
+
+.cardB_description {
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.card:hover .cardB_content {
+    transform: translateY(0);
+}
+
+.card:hover .cardB_description {
+    opacity: 1;
+    transition-delay: .25s;
+}

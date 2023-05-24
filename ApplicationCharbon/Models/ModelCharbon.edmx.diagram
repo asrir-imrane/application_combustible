@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b6a925c962f40e288265951b9446513" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="Charbon_DB2Model.Appel_Offre" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Bateau" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Centrale_Stock" Width="1.5" PointX="0.875" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Contrat" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Contrat_Details" Width="1.5" PointX="12.875" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Fournisseur" Width="1.5" PointX="12.875" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Origine" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Planing_Previsionnel" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Station" Width="1.5" PointX="0.875" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.station_type" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Stock" Width="1.5" PointX="12" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Types" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.MaVue" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.VBateau" Width="1.5" PointX="5.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.VContrat" Width="1.5" PointX="9.875" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_4" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_5" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_10" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_11" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_16" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_14_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_14_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_7" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_3" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_15" ManuallyRouted="false" />
+        <AssociationConnector Association="Charbon_DB2Model.FK_14_3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.Station_Central_Type" Width="1.5" PointX="20" PointY="5.875" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.vue_origine_plus_utilisé" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.VueContrat" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Charbon_DB2Model.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

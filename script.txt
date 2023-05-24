@@ -1,0 +1,508 @@
+USE [master]
+GO
+/****** Object:  Database [Charbon_DB2]    Script Date: 24/05/2023 10:42:58 ******/
+CREATE DATABASE [Charbon_DB2]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Charbon_DB2', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Charbon_DB2.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Charbon_DB2_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Charbon_DB2_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [Charbon_DB2] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Charbon_DB2].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Charbon_DB2] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [Charbon_DB2] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Charbon_DB2] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Charbon_DB2] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [Charbon_DB2] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Charbon_DB2] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [Charbon_DB2] SET  MULTI_USER 
+GO
+ALTER DATABASE [Charbon_DB2] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Charbon_DB2] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Charbon_DB2] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Charbon_DB2] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [Charbon_DB2] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [Charbon_DB2] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Charbon_DB2', N'ON'
+GO
+ALTER DATABASE [Charbon_DB2] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [Charbon_DB2] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [Charbon_DB2]
+GO
+/****** Object:  Table [dbo].[Station]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Station](
+	[id_station] [int] IDENTITY(1,1) NOT NULL,
+	[nom_station] [nvarchar](50) NOT NULL,
+	[adresse] [nvarchar](50) NOT NULL,
+	[telephone] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_1] PRIMARY KEY CLUSTERED 
+(
+	[id_station] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Planing_Previsionnel]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Planing_Previsionnel](
+	[id_planning] [int] IDENTITY(1,1) NOT NULL,
+	[annee] [nvarchar](50) NOT NULL,
+	[id_station] [int] NOT NULL,
+	[fichier_excel] [varchar](255) NULL,
+ CONSTRAINT [PK_5] PRIMARY KEY CLUSTERED 
+(
+	[id_planning] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Contrat]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Contrat](
+	[id_contrat] [int] IDENTITY(1,1) NOT NULL,
+	[nom_contrat] [nvarchar](50) NOT NULL,
+	[id_appOffre] [int] NOT NULL,
+ CONSTRAINT [PK_10] PRIMARY KEY CLUSTERED 
+(
+	[id_contrat] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Contrat_Details]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Contrat_Details](
+	[id_contDetails] [int] IDENTITY(1,1) NOT NULL,
+	[date_debut] [date] NOT NULL,
+	[id_contrat] [int] NOT NULL,
+	[id_fournisseur] [int] NOT NULL,
+	[date_fin] [date] NOT NULL,
+	[date_creation] [date] NOT NULL,
+	[quantite_total] [decimal](18, 0) NOT NULL,
+	[nbr_cargaisons] [int] NOT NULL,
+	[type] [nvarchar](50) NOT NULL,
+	[statut] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_12] PRIMARY KEY CLUSTERED 
+(
+	[id_contDetails] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Appel_Offre]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Appel_Offre](
+	[id_appOffre] [int] IDENTITY(1,1) NOT NULL,
+	[id_planning] [int] NOT NULL,
+	[tonnage] [float] NOT NULL,
+	[date_Emission] [date] NOT NULL,
+	[date_livraison] [date] NOT NULL,
+	[date_creation] [date] NOT NULL,
+	[nbr_bateaux] [int] NOT NULL,
+	[observation] [nvarchar](50) NOT NULL,
+	[type] [nvarchar](50) NOT NULL,
+	[statut] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_6] PRIMARY KEY CLUSTERED 
+(
+	[id_appOffre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[VueContrat]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[VueContrat]  
+AS  
+SELECT Station.id_station, Station.nom_station, Contrat.id_contrat, Contrat.nom_contrat,   
+  Contrat_Details.id_contDetails, Contrat_Details.date_debut FROM Station  
+    INNER JOIN Planing_Previsionnel ON Station.id_station = Planing_Previsionnel.id_station  
+    INNER JOIN Appel_Offre ON Planing_Previsionnel.id_planning = Appel_Offre.id_planning  
+ INNER JOIN Contrat ON Appel_Offre.id_appOffre = Contrat.id_appOffre  
+ INNER JOIN Contrat_Details ON Contrat.id_contrat = Contrat_Details.id_contrat;
+
+GO
+/****** Object:  Table [dbo].[Origine]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Origine](
+	[id_origine] [int] IDENTITY(1,1) NOT NULL,
+	[nom_origine] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_13] PRIMARY KEY CLUSTERED 
+(
+	[id_origine] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Bateau]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Bateau](
+	[id_bateau] [int] IDENTITY(1,1) NOT NULL,
+	[nom_bateau] [nvarchar](50) NOT NULL,
+	[id_contrat] [int] NOT NULL,
+	[id_origine] [int] NOT NULL,
+	[tonnage] [float] NOT NULL,
+	[valeur_calorifique] [decimal](18, 2) NOT NULL,
+	[cout] [decimal](18, 2) NOT NULL,
+	[frais_douane] [decimal](18, 2) NOT NULL,
+	[decharge] [float] NOT NULL,
+	[prix_rendu] [decimal](18, 2) NOT NULL,
+	[assurance] [float] NOT NULL,
+	[etat] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_14] PRIMARY KEY CLUSTERED 
+(
+	[id_bateau] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[vue_origine_plus_utilisé]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[vue_origine_plus_utilisé] AS  
+SELECT o.nom_origine, COUNT(*) AS nb_bateaux  
+FROM Bateau b  
+JOIN Origine o ON b.id_origine = o.id_origine  
+GROUP BY o.nom_origine
+GO
+/****** Object:  View [dbo].[MaVue]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[MaVue]
+AS
+SELECT Planing_Previsionnel.*, Station.nom_station
+FROM Planing_Previsionnel
+JOIN Station ON Planing_Previsionnel.id_station = Station.id_station ;
+GO
+/****** Object:  Table [dbo].[Fournisseur]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Fournisseur](
+	[id_fournisseur] [int] IDENTITY(1,1) NOT NULL,
+	[nom_fournisseur] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_11] PRIMARY KEY CLUSTERED 
+(
+	[id_fournisseur] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[VContrat]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[VContrat]
+AS
+SELECT Contrat.*, Contrat_Details.id_contDetails, Contrat_Details.type, Contrat_Details.nbr_cargaisons, 
+  Contrat_Details.quantite_total, Contrat_Details.date_creation, Contrat_Details.date_debut, Contrat_Details.date_fin, 
+  Contrat_Details.statut, Fournisseur.* FROM Contrat
+    INNER JOIN Contrat_Details ON Contrat.id_contrat = Contrat_Details.id_contrat
+    INNER JOIN Fournisseur ON Contrat_Details.id_fournisseur = Fournisseur.id_fournisseur;
+
+
+GO
+/****** Object:  View [dbo].[VBateau]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[VBateau]
+AS
+SELECT Bateau.*, Origine.nom_origine
+FROM Bateau
+INNER JOIN Origine ON Bateau.id_origine = Origine.id_origine;
+GO
+/****** Object:  Table [dbo].[Centrale_Stock]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Centrale_Stock](
+	[Id_SCentrale] [int] IDENTITY(1,1) NOT NULL,
+	[stock_initial] [float] NOT NULL,
+	[id_station] [int] NOT NULL,
+	[stock_final] [float] NOT NULL,
+	[stock_difference] [float] NOT NULL,
+	[stock_ajustement] [float] NOT NULL,
+	[stock_date] [date] NOT NULL,
+ CONSTRAINT [PK_2] PRIMARY KEY CLUSTERED 
+(
+	[Id_SCentrale] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[station_type]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[station_type](
+	[Id_Stype] [int] IDENTITY(1,1) NOT NULL,
+	[id_type] [int] NOT NULL,
+	[id_station] [int] NOT NULL,
+ CONSTRAINT [PK_4] PRIMARY KEY CLUSTERED 
+(
+	[Id_Stype] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Types]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Types](
+	[id_type] [int] IDENTITY(1,1) NOT NULL,
+	[type] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_3] PRIMARY KEY CLUSTERED 
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[Station_Central_Type]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[Station_Central_Type] AS
+SELECT s.nom_station, s.adresse, s.telephone, c.stock_initial, c.stock_final, c.stock_difference, c.stock_ajustement, t.type AS station_type
+FROM [dbo].[Station] s
+JOIN [dbo].[Centrale_Stock] c ON s.id_station = c.id_station
+JOIN [dbo].[station_type] st ON s.id_station = st.id_station
+JOIN [dbo].[Types] t ON st.id_type = t.id_type
+GO
+/****** Object:  Table [dbo].[Stock]    Script Date: 24/05/2023 10:42:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Stock](
+	[id_stock] [int] IDENTITY(1,1) NOT NULL,
+	[consommation] [decimal](18, 0) NOT NULL,
+	[id_bateau] [int] NOT NULL,
+	[livraison] [float] NOT NULL,
+	[decharge] [float] NOT NULL,
+	[date] [date] NOT NULL,
+	[autonomie] [float] NOT NULL,
+ CONSTRAINT [PK_15] PRIMARY KEY CLUSTERED 
+(
+	[id_stock] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:58 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Appel_Offre]
+(
+	[id_planning] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:58 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Bateau]
+(
+	[id_origine] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_3]    Script Date: 24/05/2023 10:42:58 ******/
+CREATE NONCLUSTERED INDEX [FK_3] ON [dbo].[Bateau]
+(
+	[id_contrat] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Centrale_Stock]
+(
+	[id_station] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Contrat]
+(
+	[id_appOffre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Contrat_Details]
+(
+	[id_fournisseur] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_3]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_3] ON [dbo].[Contrat_Details]
+(
+	[id_contrat] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Planing_Previsionnel]
+(
+	[id_station] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[station_type]
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_3]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_3] ON [dbo].[station_type]
+(
+	[id_station] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [FK_2]    Script Date: 24/05/2023 10:42:59 ******/
+CREATE NONCLUSTERED INDEX [FK_2] ON [dbo].[Stock]
+(
+	[id_bateau] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Appel_Offre]  WITH CHECK ADD  CONSTRAINT [FK_4] FOREIGN KEY([id_planning])
+REFERENCES [dbo].[Planing_Previsionnel] ([id_planning])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Appel_Offre] CHECK CONSTRAINT [FK_4]
+GO
+ALTER TABLE [dbo].[Bateau]  WITH CHECK ADD  CONSTRAINT [FK_11] FOREIGN KEY([id_origine])
+REFERENCES [dbo].[Origine] ([id_origine])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Bateau] CHECK CONSTRAINT [FK_11]
+GO
+ALTER TABLE [dbo].[Bateau]  WITH CHECK ADD  CONSTRAINT [FK_16] FOREIGN KEY([id_contrat])
+REFERENCES [dbo].[Contrat] ([id_contrat])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Bateau] CHECK CONSTRAINT [FK_16]
+GO
+ALTER TABLE [dbo].[Centrale_Stock]  WITH CHECK ADD  CONSTRAINT [FK_14_1] FOREIGN KEY([id_station])
+REFERENCES [dbo].[Station] ([id_station])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Centrale_Stock] CHECK CONSTRAINT [FK_14_1]
+GO
+ALTER TABLE [dbo].[Contrat]  WITH CHECK ADD  CONSTRAINT [FK_5] FOREIGN KEY([id_appOffre])
+REFERENCES [dbo].[Appel_Offre] ([id_appOffre])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Contrat] CHECK CONSTRAINT [FK_5]
+GO
+ALTER TABLE [dbo].[Contrat_Details]  WITH CHECK ADD  CONSTRAINT [FK_14_2] FOREIGN KEY([id_contrat])
+REFERENCES [dbo].[Contrat] ([id_contrat])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Contrat_Details] CHECK CONSTRAINT [FK_14_2]
+GO
+ALTER TABLE [dbo].[Contrat_Details]  WITH CHECK ADD  CONSTRAINT [FK_7] FOREIGN KEY([id_fournisseur])
+REFERENCES [dbo].[Fournisseur] ([id_fournisseur])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Contrat_Details] CHECK CONSTRAINT [FK_7]
+GO
+ALTER TABLE [dbo].[Planing_Previsionnel]  WITH CHECK ADD  CONSTRAINT [FK_3] FOREIGN KEY([id_station])
+REFERENCES [dbo].[Station] ([id_station])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Planing_Previsionnel] CHECK CONSTRAINT [FK_3]
+GO
+ALTER TABLE [dbo].[station_type]  WITH CHECK ADD  CONSTRAINT [FK_14_3] FOREIGN KEY([id_type])
+REFERENCES [dbo].[Types] ([id_type])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[station_type] CHECK CONSTRAINT [FK_14_3]
+GO
+ALTER TABLE [dbo].[station_type]  WITH CHECK ADD  CONSTRAINT [FK_15] FOREIGN KEY([id_station])
+REFERENCES [dbo].[Station] ([id_station])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[station_type] CHECK CONSTRAINT [FK_15]
+GO
+ALTER TABLE [dbo].[Stock]  WITH CHECK ADD  CONSTRAINT [FK_10] FOREIGN KEY([id_bateau])
+REFERENCES [dbo].[Bateau] ([id_bateau])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Stock] CHECK CONSTRAINT [FK_10]
+GO
+USE [master]
+GO
+ALTER DATABASE [Charbon_DB2] SET  READ_WRITE 
+GO

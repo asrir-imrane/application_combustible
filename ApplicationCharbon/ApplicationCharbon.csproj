@@ -1,0 +1,625 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42990D56-AED8-47B7-BC3B-FA973DD3443A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApplicationCharbon</RootNamespace>
+    <AssemblyName>ApplicationCharbon</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.92.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.92.1\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=6.2.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.6.2.3\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.3.0\lib\net45\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\CSS\Contrat.css" />
+    <Content Include="Assets\CSS\index.css" />
+    <Content Include="Assets\CSS\BoatPage.css" />
+    <Content Include="Assets\CSS\LoginStyle.css" />
+    <Content Include="Assets\CSS\parametre.css" />
+    <Content Include="Assets\CSS\Stock.css" />
+    <Content Include="Assets\CSS\Style.css" />
+    <Content Include="Assets\CSS\StyleSheet.css" />
+    <Content Include="Assets\IMG\36586_large.jpg" />
+    <Content Include="Assets\IMG\boat.png" />
+    <Content Include="Assets\IMG\boat2-01.jpg" />
+    <Content Include="Assets\IMG\central.png" />
+    <Content Include="Assets\IMG\Combustible.png" />
+    <Content Include="Assets\IMG\Flat-Icons.com-Square-Boat.png" />
+    <Content Include="Assets\IMG\Flat-Icons.com-Square-Boat.svg" />
+    <Content Include="Assets\IMG\Fournisseur.png" />
+    <Content Include="Assets\IMG\Global Map.jpg" />
+    <Content Include="Assets\IMG\logo login.png" />
+    <Content Include="Assets\IMG\logo.png" />
+    <Content Include="Assets\IMG\Map-01.png" />
+    <Content Include="Assets\IMG\onee.png" />
+    <Content Include="Assets\IMG\stock icon.png" />
+    <Content Include="Assets\IMG\stock.png" />
+    <Content Include="Assets\IMG\stock1.jpg" />
+    <Content Include="Assets\Scripts\nav.js" />
+    <Content Include="Assets\Scripts\script.js" />
+    <Content Include="Assets\Scripts\Stock-JS.js" />
+    <Content Include="Models\ModelCharbon.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCharbon.edmx</DependentUpon>
+      <LastGenOutput>ModelCharbon.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelCharbon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCharbon.edmx</DependentUpon>
+      <LastGenOutput>ModelCharbon.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="UI\AppelOffre\AppelOffre.aspx" />
+    <Content Include="UI\Bateaux\Bateaux.aspx" />
+    <Content Include="UI\Bateaux\deleteBateaux.aspx" />
+    <Content Include="UI\Bateaux\updateBateaux.aspx" />
+    <Content Include="UI\CentraleStock\CentraleStock.aspx" />
+    <Content Include="UI\Contrat\Contract.aspx" />
+    <Content Include="UI\AppelOffre\deleteAppelOffre.aspx" />
+    <Content Include="UI\CentraleStock\deleteCentraleStock.aspx" />
+    <Content Include="UI\Contrat\deleteContract.aspx" />
+    <Content Include="UI\Fournisseur\deleteFournisseur.aspx" />
+    <Content Include="UI\Origine\deleteOrigine.aspx" />
+    <Content Include="UI\PlanningPrevisionnel\deletePlanningPrevisionnel.aspx" />
+    <Content Include="UI\deleteStation.aspx" />
+    <Content Include="UI\Station.aspx" />
+    <Content Include="UI\updateStation.aspx" />
+    <Content Include="UI\Stock\deleteStock.aspx" />
+    <Content Include="UI\Fournisseur\Fourni.aspx" />
+    <Content Include="UI\Login\LoginForm.aspx" />
+    <Content Include="UI\Origine\Origin.aspx" />
+    <Content Include="UI\Paramètre.aspx" />
+    <Content Include="UI\PlanningPrevisionnel\PlanningPrevisionnel.aspx" />
+    <Content Include="UI\Stock\stck.aspx" />
+    <Content Include="UI\Type\deleteType.aspx" />
+    <Content Include="UI\index.aspx" />
+    <Content Include="UI\Type\Type.aspx" />
+    <Content Include="UI\AppelOffre\updateAppelOffre.aspx" />
+    <Content Include="UI\CentraleStock\updateCentraleStock.aspx" />
+    <Content Include="UI\Type\updateType.aspx" />
+    <Content Include="UI\Contrat\updateContract.aspx" />
+    <Content Include="UI\Fournisseur\updateFournisseur.aspx" />
+    <Content Include="UI\Origine\updateOrigine.aspx" />
+    <Content Include="UI\PlanningPrevisionnel\updatePlanningPrevisionnel.aspx" />
+    <Content Include="UI\Stock\updateStock.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Appel_Offre.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application_Role_Autorisations.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Autorisation.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bateau.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Centrale_Stock.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CharbonContext.cs" />
+    <Compile Include="Models\Contrat.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contrat_Details.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fournisseur.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaVue.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelCharbon.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCharbon.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelCharbon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelCharbon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCharbon.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Origine.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Planing_Previsionnel.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Station.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Station_Central_Type.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\station_type.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Types.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Permissions.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UtilisateurContext.cs" />
+    <Compile Include="Models\Utilisateurs.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utilisateur_Role.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VBateau.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VContrat.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VueContrat.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vue_origine_plus_utilisé.cs">
+      <DependentUpon>ModelCharbon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CharbonAccessService.cs" />
+    <Compile Include="Services\delete.cs" />
+    <Compile Include="UI\AppelOffre\AppelOffre.aspx.cs">
+      <DependentUpon>AppelOffre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AppelOffre\AppelOffre.aspx.designer.cs">
+      <DependentUpon>AppelOffre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bateaux\Bateaux.aspx.cs">
+      <DependentUpon>Bateaux.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Bateaux\Bateaux.aspx.designer.cs">
+      <DependentUpon>Bateaux.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bateaux\deleteBateaux.aspx.cs">
+      <DependentUpon>deleteBateaux.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Bateaux\deleteBateaux.aspx.designer.cs">
+      <DependentUpon>deleteBateaux.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bateaux\updateBateaux.aspx.cs">
+      <DependentUpon>updateBateaux.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Bateaux\updateBateaux.aspx.designer.cs">
+      <DependentUpon>updateBateaux.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CentraleStock\CentraleStock.aspx.cs">
+      <DependentUpon>CentraleStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CentraleStock\CentraleStock.aspx.designer.cs">
+      <DependentUpon>CentraleStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Contrat\Contract.aspx.cs">
+      <DependentUpon>Contract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Contrat\Contract.aspx.designer.cs">
+      <DependentUpon>Contract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AppelOffre\deleteAppelOffre.aspx.cs">
+      <DependentUpon>deleteAppelOffre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AppelOffre\deleteAppelOffre.aspx.designer.cs">
+      <DependentUpon>deleteAppelOffre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CentraleStock\deleteCentraleStock.aspx.cs">
+      <DependentUpon>deleteCentraleStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CentraleStock\deleteCentraleStock.aspx.designer.cs">
+      <DependentUpon>deleteCentraleStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Contrat\deleteContract.aspx.cs">
+      <DependentUpon>deleteContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Contrat\deleteContract.aspx.designer.cs">
+      <DependentUpon>deleteContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fournisseur\deleteFournisseur.aspx.cs">
+      <DependentUpon>deleteFournisseur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Fournisseur\deleteFournisseur.aspx.designer.cs">
+      <DependentUpon>deleteFournisseur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Origine\deleteOrigine.aspx.cs">
+      <DependentUpon>deleteOrigine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Origine\deleteOrigine.aspx.designer.cs">
+      <DependentUpon>deleteOrigine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\deletePlanningPrevisionnel.aspx.cs">
+      <DependentUpon>deletePlanningPrevisionnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\deletePlanningPrevisionnel.aspx.designer.cs">
+      <DependentUpon>deletePlanningPrevisionnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\deleteStation.aspx.cs">
+      <DependentUpon>deleteStation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\deleteStation.aspx.designer.cs">
+      <DependentUpon>deleteStation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Station.aspx.cs">
+      <DependentUpon>Station.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Station.aspx.designer.cs">
+      <DependentUpon>Station.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\updateStation.aspx.cs">
+      <DependentUpon>updateStation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\updateStation.aspx.designer.cs">
+      <DependentUpon>updateStation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stock\deleteStock.aspx.cs">
+      <DependentUpon>deleteStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Stock\deleteStock.aspx.designer.cs">
+      <DependentUpon>deleteStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fournisseur\Fourni.aspx.cs">
+      <DependentUpon>Fourni.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Fournisseur\Fourni.aspx.designer.cs">
+      <DependentUpon>Fourni.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Login\LoginForm.aspx.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Login\LoginForm.aspx.designer.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Login\LoginService.cs" />
+    <Compile Include="UI\Origine\Origin.aspx.cs">
+      <DependentUpon>Origin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Origine\Origin.aspx.designer.cs">
+      <DependentUpon>Origin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Paramètre.aspx.cs">
+      <DependentUpon>Paramètre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Paramètre.aspx.designer.cs">
+      <DependentUpon>Paramètre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\PlanningPrevisionnel.aspx.cs">
+      <DependentUpon>PlanningPrevisionnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\PlanningPrevisionnel.aspx.designer.cs">
+      <DependentUpon>PlanningPrevisionnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stock\stck.aspx.cs">
+      <DependentUpon>stck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Stock\stck.aspx.designer.cs">
+      <DependentUpon>stck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Type\deleteType.aspx.cs">
+      <DependentUpon>deleteType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Type\deleteType.aspx.designer.cs">
+      <DependentUpon>deleteType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Type\Type.aspx.cs">
+      <DependentUpon>Type.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Type\Type.aspx.designer.cs">
+      <DependentUpon>Type.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AppelOffre\updateAppelOffre.aspx.cs">
+      <DependentUpon>updateAppelOffre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\AppelOffre\updateAppelOffre.aspx.designer.cs">
+      <DependentUpon>updateAppelOffre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CentraleStock\updateCentraleStock.aspx.cs">
+      <DependentUpon>updateCentraleStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CentraleStock\updateCentraleStock.aspx.designer.cs">
+      <DependentUpon>updateCentraleStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Type\updateType.aspx.cs">
+      <DependentUpon>updateType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Type\updateType.aspx.designer.cs">
+      <DependentUpon>updateType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Contrat\updateContract.aspx.cs">
+      <DependentUpon>updateContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Contrat\updateContract.aspx.designer.cs">
+      <DependentUpon>updateContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fournisseur\updateFournisseur.aspx.cs">
+      <DependentUpon>updateFournisseur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Fournisseur\updateFournisseur.aspx.designer.cs">
+      <DependentUpon>updateFournisseur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Origine\updateOrigine.aspx.cs">
+      <DependentUpon>updateOrigine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Origine\updateOrigine.aspx.designer.cs">
+      <DependentUpon>updateOrigine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\updatePlanningPrevisionnel.aspx.cs">
+      <DependentUpon>updatePlanningPrevisionnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PlanningPrevisionnel\updatePlanningPrevisionnel.aspx.designer.cs">
+      <DependentUpon>updatePlanningPrevisionnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stock\updateStock.aspx.cs">
+      <DependentUpon>updateStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Stock\updateStock.aspx.designer.cs">
+      <DependentUpon>updateStock.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserModel.edmx.diagram">
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelCharbon.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCharbon.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelCharbon.edmx.diagram">
+      <DependentUpon>ModelCharbon.edmx</DependentUpon>
+    </Content>
+    <Content Include="libman.json" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\excelFile\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6217</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6217/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
