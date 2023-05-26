@@ -93,7 +93,6 @@
                                             </div>
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
                                                 <a class="dropdown-item" href="Login/LoginForm.aspx">Déconnexion</a>
                                             </div>
                                         </li>
@@ -124,7 +123,9 @@
                             <li><a href="#">Origine</a></li>
                             <li><a href="#">Fournisseur</a></li>
                             <li><a href="#">Bateaux</a></li>
-                          <li><a href="#">Type</a></li><li><a href="#">Stock</a></li><li><a href="#">Centrale Stock</a></li>
+                            <li><a href="#">Type</a></li>
+                            <li><a href="#">Stock</a></li>
+                            <li><a href="#">Centrale Stock</a></li>
                             <li><a href="#">Stock</a></li>
                         </ul>
 
@@ -166,7 +167,7 @@
                                 <div class="ms-3 search-form">
                                     <div class="d-flex justify-content-center">
                                         <form class="d-flex">
-                                            <input class="form-control me-2" id="searchInput"   placeholder="Rechercher..." aria-label="Search" />
+                                            <input class="form-control me-2" id="searchInput" placeholder="Rechercher..." aria-label="Search" />
                                         </form>
                                     </div>
                                 </div>
@@ -178,21 +179,19 @@
                             <div class="center" runat="server">
                                 <ul>
                                     <%@ Import Namespace="ApplicationCharbon.Services" %>
-                                    <% var service = new CharbonAccessService();%>
+                                    <% var service = new CharbonAccessService(); %>
 
                                     <% var va = service.GetMyDataContrat();
                                         foreach (var tp in va)
                                         { %>
                                     <li>
                                         <div class="image">
-                                            <i class="bi bi-file-earmark-text"></i>
+                                            <i class="bi bi-file-earmark-text" id="image-<%= tp.id_contrat %>"></i>
                                         </div>
                                         <div class="title_contrat">
-
                                             <h4>Nom Contrat : <%= tp.nom_contrat %></h4>
                                             <br />
                                             <p>Date Creation :<%= tp.date_creation.ToString("yyyy-MM-dd") %></p>
-
                                         </div>
                                         <div class="text-group">
                                             <p>ID Fournisseur :<%= tp.id_fournisseur %></p>
@@ -218,18 +217,19 @@
                                             </div>
                                         </div>
                                     </li>
+
                                     <script>
-                                        const imageElement = document.querySelector('.bi.bi-file-earmark-text');
-                                        const statut = '<%= tp.statut %>'; // Added quotes around '<%= tp.statut %>'
-                                        if (statut === "en_attente") {
-                                            imageElement.style.color = "#ffc107";
-                                        } else if (statut === "validee") {
-                                            imageElement.style.color = "#28a745";
-                                        } else if (statut === "rejettee") {
-                                            imageElement.style.color = "#FF0000";
+                                        var statut = '<%= tp.statut %>';
+                                        var imageElement = document.querySelector('#image-<%= tp.id_contrat %>');
+
+                                        if (statut === 'en_attente') {
+                                            imageElement.style.color = '#ffc107';
+                                        } else if (statut === 'validee') {
+                                            imageElement.style.color = '#28a745';
+                                        } else if (statut === 'rejetee') {
+                                            imageElement.style.color = '#FF0000';
                                         }
                                     </script>
-
 
                                     <% } %>
                                 </ul>
@@ -252,7 +252,7 @@
                                     }
                                 }
 
-                               
+
                                 function showAll() {
                                     var list = document.getElementsByTagName('li');
 
